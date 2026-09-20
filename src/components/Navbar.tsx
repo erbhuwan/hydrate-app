@@ -79,7 +79,7 @@ export function Navbar() {
             href="#downloads"
             className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 hover:border-cyan-500/40 rounded-xl transition-all shadow-sm"
           >
-            <span>v1.0.0 Stable</span>
+            <span>{release.tag} Stable</span>
           </a>
 
           <a
