@@ -11,8 +11,8 @@ const faqs = [
     a: 'Hydrate uses native OS event listeners solely to detect if keyboard or mouse events have occurred recently. It NEVER records keystrokes, letters typed, mouse coordinates, screen contents, or application names. Everything is evaluated locally in volatile RAM and immediately discarded.',
   },
   {
-    q: 'Why does the hydration day reset at 6:00 AM instead of midnight?',
-    a: 'Human sleep and wake cycles do not conform to midnight calendar boundaries. If you drink water at 1:30 AM while working on a project, that intake belongs to your current active cycle. Hydrate rolls over at 6:00 AM to mirror your natural morning routine.',
+    q: 'How does the custom hydration day reset work?',
+    a: 'Human sleep and wake cycles do not conform to midnight calendar boundaries. If you drink water late at night while working, that intake belongs to your current active session. Hydrate allows you to configure a custom morning rollover time (e.g. 6:00 AM) that matches your actual waking routine.',
   },
   {
     q: 'Does Hydrate require an internet connection?',

@@ -21,12 +21,12 @@ const steps = [
   },
   {
     step: '03',
-    title: 'Resets with Your Morning Routine',
-    subtitle: 'The 6:00 AM circadian cycle',
+    title: 'Resets with Your Custom Routine',
+    subtitle: 'Personalized day start cycle',
     description:
-      'Never lose streak points because you drank water past midnight while working late. Hydrate rolls over at 6:00 AM when your real morning begins.',
+      'Never lose streak points because you drank water past midnight while working late. Customize your rollover time (e.g. 6:00 AM) to match your real waking morning.',
     icon: Sun,
-    metric: '6:00 AM Cycle',
+    metric: 'Customizable Cycle',
   },
 ];
 

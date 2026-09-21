@@ -1,70 +1,70 @@
 import { 
   Activity, 
   SunMedium, 
-  Droplets, 
   Cloud, 
-  Zap, 
-  Bell
+  Volume2, 
+  Sliders, 
+  Zap
 } from 'lucide-react';
 
 const features = [
   {
     icon: Activity,
-    title: 'Work Mode (Activity Detection)',
+    title: 'Work Mode & Desk Sitting Tracking',
     badge: 'Hardware Aware',
     description:
-      'Monitors keyboard and mouse activity locally. Reminders chime only when you are actively working at your desk, auto-pausing when you step away for lunch or meetings.',
+      'Monitors local keyboard and mouse activity. Reminds you only when you are actively working, auto-pausing when you step away for breaks or meetings.',
     color: 'from-cyan-500/20 to-sky-500/10',
     borderColor: 'group-hover:border-cyan-500/40',
     iconColor: 'text-cyan-400',
   },
   {
-    icon: SunMedium,
-    title: 'Natural 6:00 AM Hydration Day',
-    badge: 'Circadian Aligned',
+    icon: Sliders,
+    title: 'Custom Reminder Styles',
+    badge: 'Configurable',
     description:
-      'Your body’s day starts when you wake up, not at 12:00 AM midnight. Late-night focus sessions count towards your actual waking day without premature streak resets.',
-    color: 'from-amber-500/20 to-orange-500/10',
-    borderColor: 'group-hover:border-amber-500/40',
-    iconColor: 'text-amber-400',
+      'Choose the notification style that suits your workflow: sleek menu bar banners, full-screen focus modals, or gentle dock ambient glows.',
+    color: 'from-blue-500/20 to-indigo-500/10',
+    borderColor: 'group-hover:border-blue-500/40',
+    iconColor: 'text-blue-400',
   },
   {
-    icon: Droplets,
-    title: 'Visual Glass & Daily Targets',
-    badge: 'Real-Time Progress',
+    icon: Volume2,
+    title: 'Custom Chimes & Audio Effects',
+    badge: 'Soothing Audio',
     description:
-      'Watch your 3D glass reservoir fill up glass-by-glass as you log drinks. Track daily targets (e.g. 2.0L) with clean percentage progress rings.',
-    color: 'from-sky-500/20 to-blue-500/10',
-    borderColor: 'group-hover:border-sky-500/40',
-    iconColor: 'text-sky-400',
-  },
-  {
-    icon: Bell,
-    title: 'Smart Reminders & Quick Snooze',
-    badge: 'Non-Intrusive',
-    description:
-      'Configurable reminder cycles with convenient 5m, 10m, and 20m snooze presets. Chimes gently and respects your focus state and presentations.',
+      'Select from crystal chimes, gentle streams, or water drops to keep hydration prompts calm, pleasant, and non-disruptive during deep work.',
     color: 'from-emerald-500/20 to-teal-500/10',
     borderColor: 'group-hover:border-emerald-500/40',
     iconColor: 'text-emerald-400',
   },
   {
-    icon: Cloud,
-    title: 'Optional Cloud Backup & Sync',
-    badge: 'Multi-Device',
+    icon: SunMedium,
+    title: 'Customizable Day Start Cycle',
+    badge: 'Custom Schedule',
     description:
-      'Seamless optional Google Sign-in backed by Firebase. Sync your streaks, daily logs, and customized goals across your macOS work machine and Windows desktop.',
-    color: 'from-indigo-500/20 to-purple-500/10',
-    borderColor: 'group-hover:border-indigo-500/40',
-    iconColor: 'text-indigo-400',
+      'Configure your own day start time (e.g. 6:00 AM) to match your personal waking routine. Late-night focus sessions count toward your active day instead of resetting at midnight.',
+    color: 'from-amber-500/20 to-orange-500/10',
+    borderColor: 'group-hover:border-amber-500/40',
+    iconColor: 'text-amber-400',
+  },
+  {
+    icon: Cloud,
+    title: 'Optional Cloud Backup & Multi-Device Sync',
+    badge: 'Cross-Platform',
+    description:
+      'Seamless optional Google Sign-in backed by Firebase. Sync your streaks, daily logs, and custom settings across macOS, Windows, and multiple workstations.',
+    color: 'from-sky-500/20 to-cyan-500/10',
+    borderColor: 'group-hover:border-sky-500/40',
+    iconColor: 'text-sky-400',
   },
   {
     icon: Zap,
-    title: 'Zero Distraction Footprint',
+    title: 'Zero Distraction & Lightweight',
     badge: '< 45MB RAM',
     description:
-      'Lives exclusively in your macOS menu bar or Windows system tray. Zero dock clutter, ultra-low CPU footprint, and instant launch on system boot.',
-    color: 'from-violet-500/20 to-pink-500/10',
+      'Lives exclusively in your macOS menu bar or Windows system tray. Zero dock clutter, ultra-low CPU footprint, and instant system boot launch.',
+    color: 'from-violet-500/20 to-purple-500/10',
     borderColor: 'group-hover:border-violet-500/40',
     iconColor: 'text-violet-400',
   },
@@ -83,11 +83,10 @@ export function Features() {
             Engineered for Deep Work
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-4 tracking-tight">
-            Built for developers, designers, and desk professionals.
+            Essential features built for desk professionals.
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mt-4 leading-relaxed">
-            Most hydration trackers rely on generic timers that ring while you’re away. 
-            Hydrate stays connected to your real computer activity.
+            Hydrate balances intelligent desk activity awareness with customizable reminders, soothing chimes, and optional cloud sync.
           </p>
         </div>
 
