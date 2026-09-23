@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Download, Menu, X } from 'lucide-react';
+import { Download, Menu, X, ShieldCheck } from 'lucide-react';
 import { AppleIcon, WindowsIcon } from './Icons';
 import { useOS } from '../hooks/useOS';
 import { useLatestRelease } from '../hooks/useLatestRelease';
 import { triggerDownloadConfetti } from '../utils/confetti';
 
-export function Navbar() {
+interface NavbarProps {
+  onNavigateToAdmin?: (e?: React.MouseEvent) => void;
+}
+
+export function Navbar({ onNavigateToAdmin }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const osInfo = useOS();
@@ -75,6 +79,15 @@ export function Navbar() {
 
         {/* Right CTA Actions */}
         <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="/admin"
+            onClick={onNavigateToAdmin}
+            title="Admin Portal"
+            className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-cyan-950/60 text-slate-400 hover:text-cyan-300 border border-slate-700/60 hover:border-cyan-500/40 transition-all cursor-pointer"
+          >
+            <ShieldCheck className="w-4 h-4" />
+          </a>
+
           <a
             href="#downloads"
             className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 hover:border-cyan-500/40 rounded-xl transition-all shadow-sm"

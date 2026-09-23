@@ -34,6 +34,7 @@ dist-ssr/
 .env.development
 .env.local
 .env.*.local
+firebase-admin.json
 
 # Editor directories and files
 .vscode/*

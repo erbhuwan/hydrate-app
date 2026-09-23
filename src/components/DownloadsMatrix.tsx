@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { 
   Download, 
   Check, 
-  Copy, 
-  FileCode
+  Copy
 } from 'lucide-react';
 import { AppleIcon, WindowsIcon } from './Icons';
 import { useLatestRelease } from '../hooks/useLatestRelease';
@@ -142,27 +141,6 @@ export function DownloadsMatrix() {
               </div>
             );
           })}
-        </div>
-
-        {/* Homebrew & CLI banner */}
-        <div className="mt-12 p-6 rounded-2xl glass-panel border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400">
-              <FileCode className="w-5 h-5 text-cyan-400" />
-            </div>
-            <div>
-              <div className="text-sm font-bold text-white">Prefer Terminal / Package Managers?</div>
-              <div className="text-xs text-slate-400">
-                Install directly via Homebrew Cask or Winget CLI
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-            <code className="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl font-mono text-xs text-cyan-300 select-all">
-              brew install --cask erbhuwan/tap/hydrate
-            </code>
-          </div>
         </div>
       </div>
     </section>

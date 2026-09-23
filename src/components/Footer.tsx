@@ -1,8 +1,11 @@
 import { Heart } from 'lucide-react';
-import { TwitterIcon } from './Icons';
 import { useLatestRelease } from '../hooks/useLatestRelease';
 
-export function Footer() {
+interface FooterProps {
+  onNavigateToAdmin?: (e?: React.MouseEvent) => void;
+}
+
+export function Footer({ onNavigateToAdmin }: FooterProps) {
   const release = useLatestRelease();
 
   return (
@@ -74,7 +77,7 @@ export function Footer() {
           {/* Links Col 3: Community & Developer */}
           <div className="md:col-span-2 flex flex-col gap-3 text-xs">
             <span className="font-bold text-white uppercase tracking-wider text-[11px] font-mono">
-              Developer
+              Developer & Admin
             </span>
             <a
               href="https://bhuwanacharyaupadhyaya.com.np"
@@ -94,16 +97,16 @@ export function Footer() {
               GitHub (@erbhuwan)
             </a>
             <a
-              href="https://twitter.com/intent/tweet?text=Check%20out%20Hydrate%20%E2%80%94%20the%20smart%20menu%20bar%20hydration%20tracker%20for%20Mac%20and%20Windows!%20https%3A%2F%2Ftryhydrate.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              href="/admin"
+              onClick={onNavigateToAdmin}
+              className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 font-mono"
             >
-              <TwitterIcon className="w-3.5 h-3.5" />
-              <span>Share on X / Twitter</span>
+              <span>Admin Portal</span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-900 border border-slate-800 text-cyan-400">/admin</span>
             </a>
           </div>
         </div>
+
 
         {/* Bottom copyright line */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
