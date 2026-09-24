@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Download, Menu, X, ShieldCheck } from 'lucide-react';
+import { Download, Menu, X } from 'lucide-react';
 import { AppleIcon, WindowsIcon } from './Icons';
 import { useOS } from '../hooks/useOS';
 import { useLatestRelease } from '../hooks/useLatestRelease';
 import { triggerDownloadConfetti } from '../utils/confetti';
 
 interface NavbarProps {
-  onNavigateToAdmin?: (e?: React.MouseEvent) => void;
+  onNavigateToPrivacy?: () => void;
+  onNavigateToTerms?: () => void;
 }
 
-export function Navbar({ onNavigateToAdmin }: NavbarProps) {
+export function Navbar({ onNavigateToPrivacy, onNavigateToTerms }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const osInfo = useOS();
@@ -79,15 +80,6 @@ export function Navbar({ onNavigateToAdmin }: NavbarProps) {
 
         {/* Right CTA Actions */}
         <div className="hidden lg:flex items-center gap-3">
-          <a
-            href="/admin"
-            onClick={onNavigateToAdmin}
-            title="Admin Portal"
-            className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-cyan-950/60 text-slate-400 hover:text-cyan-300 border border-slate-700/60 hover:border-cyan-500/40 transition-all cursor-pointer"
-          >
-            <ShieldCheck className="w-4 h-4" />
-          </a>
-
           <a
             href="#downloads"
             className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 hover:border-cyan-500/40 rounded-xl transition-all shadow-sm"
@@ -161,6 +153,28 @@ export function Navbar({ onNavigateToAdmin }: NavbarProps) {
           >
             FAQ
           </a>
+          {onNavigateToPrivacy && (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigateToPrivacy();
+              }}
+              className="text-left text-slate-300 hover:text-cyan-400 py-2 text-sm font-medium border-b border-slate-800/60 cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+          )}
+          {onNavigateToTerms && (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigateToTerms();
+              }}
+              className="text-left text-slate-300 hover:text-cyan-400 py-2 text-sm font-medium border-b border-slate-800/60 cursor-pointer"
+            >
+              Terms of Service
+            </button>
+          )}
 
           <div className="flex flex-col gap-3 pt-2">
             <a

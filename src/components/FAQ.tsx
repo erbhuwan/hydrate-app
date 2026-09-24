@@ -7,6 +7,10 @@ const faqs = [
     a: 'Yes! Hydrate is 100% free to download and use for macOS and Windows. There are no subscriptions, paywalls, or feature locks.',
   },
   {
+    q: 'How does Google Drive backup and Google Calendar integration work?',
+    a: 'Hydrate communicates directly with official Google APIs via encrypted HTTPS without any intermediate third-party servers. Google Drive backup uses the private, hidden appDataFolder to save your hydrate_backup.json file (it cannot read any other files in your Drive). Google Calendar uses read-only permission solely on your device to detect when you are in meetings and automatically snooze hydration prompts.',
+  },
+  {
     q: 'How does Work Mode protect my privacy?',
     a: 'Hydrate uses native OS event listeners solely to detect if keyboard or mouse events have occurred recently. It NEVER records keystrokes, letters typed, mouse coordinates, screen contents, or application names. Everything is evaluated locally in volatile RAM and immediately discarded.',
   },
@@ -16,7 +20,7 @@ const faqs = [
   },
   {
     q: 'Does Hydrate require an internet connection?',
-    a: 'Not at all. Hydrate is architected offline-first. All your logs, streaks, and settings are stored locally on your device. Google Sign-In and Firebase cloud backup are completely optional if you want multi-device sync.',
+    a: 'Not at all. Hydrate is architected offline-first. All your logs, streaks, and settings are stored locally on your device in standard JSON files. Connecting your Google account for Google Drive backup and Google Calendar smart snooze is completely optional.',
   },
   {
     q: 'How lightweight is the background footprint?',
@@ -46,7 +50,7 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mt-3">
-            Everything you need to know about privacy, platform compatibility, and features.
+            Everything you need to know about privacy, platform compatibility, Google integrations, and features.
           </p>
         </div>
 

@@ -8,37 +8,69 @@ import { DownloadsMatrix } from './components/DownloadsMatrix';
 import { FAQ } from './components/FAQ';
 import { GitHubTrust } from './components/GitHubTrust';
 import { Footer } from './components/Footer';
-import { AdminRouter } from './components/admin/AdminRouter';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsOfService } from './components/TermsOfService';
+
+export type ActivePage = 'home' | 'privacy' | 'terms';
 
 export function App() {
-  const [isAdminMode, setIsAdminMode] = useState(false);
+  const [activePage, setActivePage] = useState<ActivePage>('home');
 
   useEffect(() => {
     const handleLocation = () => {
-      const path = window.location.pathname;
-      setIsAdminMode(path.startsWith('/admin'));
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+
+      if (path.includes('/privacy') || hash.includes('/privacy')) {
+        setActivePage('privacy');
+      } else if (path.includes('/terms') || hash.includes('/terms')) {
+        setActivePage('terms');
+      } else {
+        setActivePage('home');
+      }
     };
 
     handleLocation();
     window.addEventListener('popstate', handleLocation);
-    return () => window.removeEventListener('popstate', handleLocation);
+    window.addEventListener('hashchange', handleLocation);
+    return () => {
+      window.removeEventListener('popstate', handleLocation);
+      window.removeEventListener('hashchange', handleLocation);
+    };
   }, []);
-
-  const navigateToAdmin = (e?: React.MouseEvent) => {
-    if (e) e.preventDefault();
-    window.history.pushState({}, '', '/admin/users');
-    setIsAdminMode(true);
-  };
 
   const navigateToHome = () => {
     window.history.pushState({}, '', '/');
-    setIsAdminMode(false);
+    setActivePage('home');
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  if (isAdminMode) {
+  const navigateToPrivacy = () => {
+    window.history.pushState({}, '', '/privacy');
+    setActivePage('privacy');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const navigateToTerms = () => {
+    window.history.pushState({}, '', '/terms');
+    setActivePage('terms');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  if (activePage === 'privacy') {
     return (
-      <AdminRouter
+      <PrivacyPolicy
         onNavigateHome={navigateToHome}
+        onNavigateToTerms={navigateToTerms}
+      />
+    );
+  }
+
+  if (activePage === 'terms') {
+    return (
+      <TermsOfService
+        onNavigateHome={navigateToHome}
+        onNavigateToPrivacy={navigateToPrivacy}
       />
     );
   }
@@ -50,7 +82,10 @@ export function App() {
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col flex-1">
-        <Navbar onNavigateToAdmin={navigateToAdmin} />
+        <Navbar
+          onNavigateToPrivacy={navigateToPrivacy}
+          onNavigateToTerms={navigateToTerms}
+        />
         <main className="flex-1">
           <Hero />
           <Features />
@@ -60,7 +95,10 @@ export function App() {
           <FAQ />
           <GitHubTrust />
         </main>
-        <Footer onNavigateToAdmin={navigateToAdmin} />
+        <Footer
+          onNavigateToPrivacy={navigateToPrivacy}
+          onNavigateToTerms={navigateToTerms}
+        />
       </div>
     </div>
   );

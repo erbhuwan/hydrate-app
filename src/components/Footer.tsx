@@ -1,11 +1,12 @@
-import { Heart } from 'lucide-react';
+import { Heart, ShieldCheck, FileText } from 'lucide-react';
 import { useLatestRelease } from '../hooks/useLatestRelease';
 
 interface FooterProps {
-  onNavigateToAdmin?: (e?: React.MouseEvent) => void;
+  onNavigateToPrivacy?: () => void;
+  onNavigateToTerms?: () => void;
 }
 
-export function Footer({ onNavigateToAdmin }: FooterProps) {
+export function Footer({ onNavigateToPrivacy, onNavigateToTerms }: FooterProps) {
   const release = useLatestRelease();
 
   return (
@@ -74,39 +75,44 @@ export function Footer({ onNavigateToAdmin }: FooterProps) {
             </a>
           </div>
 
-          {/* Links Col 3: Community & Developer */}
+          {/* Links Col 3: Legal & Open Source */}
           <div className="md:col-span-2 flex flex-col gap-3 text-xs">
             <span className="font-bold text-white uppercase tracking-wider text-[11px] font-mono">
-              Developer & Admin
+              Legal & Community
             </span>
+            <button
+              onClick={onNavigateToPrivacy}
+              className="text-left text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Privacy Policy</span>
+            </button>
+            <button
+              onClick={onNavigateToTerms}
+              className="text-left text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <FileText className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Terms of Service</span>
+            </button>
             <a
               href="https://bhuwanacharyaupadhyaya.com.np"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center gap-1.5"
+              className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center gap-1.5 pt-1"
             >
               <span>Bhuwan Acharya</span>
               <span className="text-[10px] text-slate-500">↗</span>
             </a>
             <a
-              href="https://github.com/erbhuwan"
+              href="https://github.com/erbhuwan/hydrate-app"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-cyan-400 transition-colors"
             >
               GitHub (@erbhuwan)
             </a>
-            <a
-              href="/admin"
-              onClick={onNavigateToAdmin}
-              className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 font-mono"
-            >
-              <span>Admin Portal</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-900 border border-slate-800 text-cyan-400">/admin</span>
-            </a>
           </div>
         </div>
-
 
         {/* Bottom copyright line */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">

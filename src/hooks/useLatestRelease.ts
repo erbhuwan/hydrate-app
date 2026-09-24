@@ -108,16 +108,48 @@ async function fetchLatestReleaseData(): Promise<ReleaseState> {
         headers.Authorization = `Bearer ${token}`;
       }
 
-      const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=5`, {
-        headers,
-      });
-
-      if (!res.ok) {
-        throw new Error(`GitHub API returned status ${res.status}`);
+      // 1. Try fetching the latest published stable release from GitHub
+      let data: GitHubReleaseResponse | null = null;
+      
+      try {
+        const resLatest = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`, {
+          headers,
+        });
+        if (resLatest.ok) {
+          const json = await resLatest.json();
+          if (json && !json.draft && !json.prerelease) {
+            data = json;
+          }
+        }
+      } catch {
+        // Continue to fallback list query
       }
 
-      const releases = await res.json();
-      const data: GitHubReleaseResponse = Array.isArray(releases) && releases.length > 0 ? releases[0] : releases;
+      // 2. Fallback to list query and strictly filter out any draft or prerelease entries
+      if (!data) {
+        const resList = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=10`, {
+          headers,
+        });
+
+        if (resList.ok) {
+          const releases = await resList.json();
+          if (Array.isArray(releases)) {
+            const published = releases.filter(
+              (r: any) => !r.draft && !r.prerelease && r.published_at
+            );
+            if (published.length > 0) {
+              data = published[0];
+            }
+          }
+        }
+      }
+
+      // 3. If no published release exists, use initial default state
+      if (!data) {
+        cachedReleaseState = INITIAL_STATE;
+        return INITIAL_STATE;
+      }
+
       const tag = data.tag_name || FALLBACK_VERSION;
       const versionClean = tag.replace(/^v/, '');
 

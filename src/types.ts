@@ -13,6 +13,8 @@ export interface GitHubReleaseResponse {
   published_at: string;
   html_url: string;
   body: string;
+  draft?: boolean;
+  prerelease?: boolean;
   assets: ReleaseAsset[];
 }
 

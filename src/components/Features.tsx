@@ -1,8 +1,8 @@
 import { 
   Activity, 
   SunMedium, 
-  Cloud, 
-  Volume2, 
+  HardDrive, 
+  Calendar, 
   Sliders, 
   Zap
 } from 'lucide-react';
@@ -13,27 +13,37 @@ const features = [
     title: 'Work Mode & Desk Sitting Tracking',
     badge: 'Hardware Aware',
     description:
-      'Monitors local keyboard and mouse activity. Reminds you only when you are actively working, auto-pausing when you step away for breaks or meetings.',
+      'Monitors local keyboard and mouse activity. Reminds you only when you are actively working, auto-pausing when you step away for breaks.',
     color: 'from-cyan-500/20 to-sky-500/10',
     borderColor: 'group-hover:border-cyan-500/40',
     iconColor: 'text-cyan-400',
   },
   {
-    icon: Sliders,
-    title: 'Custom Reminder Styles',
-    badge: 'Configurable',
+    icon: Calendar,
+    title: 'Google Calendar Smart Snooze',
+    badge: 'Meeting Aware',
     description:
-      'Choose the notification style that suits your workflow: sleek menu bar banners, full-screen focus modals, or gentle dock ambient glows.',
-    color: 'from-blue-500/20 to-indigo-500/10',
-    borderColor: 'group-hover:border-blue-500/40',
-    iconColor: 'text-blue-400',
+      'Connects securely to your Google Calendar to read today\'s schedule and automatically silence or snooze reminders while you are in busy meetings or calls.',
+    color: 'from-indigo-500/20 to-blue-500/10',
+    borderColor: 'group-hover:border-indigo-500/40',
+    iconColor: 'text-indigo-400',
   },
   {
-    icon: Volume2,
-    title: 'Custom Chimes & Audio Effects',
-    badge: 'Soothing Audio',
+    icon: HardDrive,
+    title: 'Private Google Drive Cloud Backup',
+    badge: 'Zero-Access Sync',
     description:
-      'Select from crystal chimes, gentle streams, or water drops to keep hydration prompts calm, pleasant, and non-disruptive during deep work.',
+      'Back up and restore your hydration logs, streaks, and settings directly to your private, hidden Google Drive appDataFolder with zero intermediate servers.',
+    color: 'from-sky-500/20 to-cyan-500/10',
+    borderColor: 'group-hover:border-sky-500/40',
+    iconColor: 'text-sky-400',
+  },
+  {
+    icon: Sliders,
+    title: 'Custom Reminder Styles & Chimes',
+    badge: 'Configurable',
+    description:
+      'Choose between sleek menu bar banners, full-screen focus modals, or gentle dock glows with crystal water chimes tailored for deep focus.',
     color: 'from-emerald-500/20 to-teal-500/10',
     borderColor: 'group-hover:border-emerald-500/40',
     iconColor: 'text-emerald-400',
@@ -47,16 +57,6 @@ const features = [
     color: 'from-amber-500/20 to-orange-500/10',
     borderColor: 'group-hover:border-amber-500/40',
     iconColor: 'text-amber-400',
-  },
-  {
-    icon: Cloud,
-    title: 'Optional Cloud Backup & Multi-Device Sync',
-    badge: 'Cross-Platform',
-    description:
-      'Seamless optional Google Sign-in backed by Firebase. Sync your streaks, daily logs, and custom settings across macOS, Windows, and multiple workstations.',
-    color: 'from-sky-500/20 to-cyan-500/10',
-    borderColor: 'group-hover:border-sky-500/40',
-    iconColor: 'text-sky-400',
   },
   {
     icon: Zap,
@@ -86,7 +86,7 @@ export function Features() {
             Essential features built for desk professionals.
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mt-4 leading-relaxed">
-            Hydrate balances intelligent desk activity awareness with customizable reminders, soothing chimes, and optional cloud sync.
+            Hydrate combines intelligent desk activity awareness, Google Calendar meeting detection, private Google Drive backup, and customizable soothing chimes.
           </p>
         </div>
 
